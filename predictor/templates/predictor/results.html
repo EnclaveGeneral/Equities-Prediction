@@ -1,0 +1,15 @@
+<!-- predictor/templates/predictor/results.html -->
+{% extends 'predictor/base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Simulation Results for {{ simulation.symbol }}</h2>
+<img src="data:image/png;base64,{{ graphic }}" alt="Simulation Results">
+<h3>Final Values:</h3>
+<ul>
+{% for percentile, value in final_values.items %}
+    <li>{{ percentile }}th percentile: ${{ value|floatformat:2 }}</li>
+{% endfor %}
+</ul>
+<a href="{% url 'index' %}">Run Another Simulation</a>
+{% endblock %}

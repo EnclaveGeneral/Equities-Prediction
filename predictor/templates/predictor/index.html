@@ -1,0 +1,31 @@
+{% extends 'predictor/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="search-container">
+    <h1 class="title">Equities Prediction</h1>
+    <form method="post" class="search-form">
+        {% csrf_token %}
+        <div class="search-bar">
+            {{ form.symbol }}
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <div class="parameters">
+            <div class="parameter">
+                <label for="{{ form.initial_investment.id_for_label }}">Initial Investment ($)</label>
+                {{ form.initial_investment }}
+            </div>
+            <div class="parameter">
+                <label for="{{ form.monthly_contribution.id_for_label }}">Monthly Contribution ($)</label>
+                {{ form.monthly_contribution }}
+            </div>
+            <div class="parameter">
+                <label for="{{ form.num_months.id_for_label }}">Number of Months</label>
+                {{ form.num_months }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
